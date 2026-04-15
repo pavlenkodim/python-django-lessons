@@ -1,7 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Bd, Rubric
+
 
 # Create your views here.
 def index(request):
-    print(request)
-    return HttpResponse("Hello, world. You're the bboard.")
+    bbs = Bd.objects.order_by('-published')
+    rubrics = Rubric.objects.all()
+    return render(request, 'bboard/index.html', {'bbs': bbs, 'rubrics': rubrics})
+
+def by_rubric(request, rubric_id):
+    bbs = Bd.objects.filter(rubric=rubric_id)
+    rubrics = Rubric.objects.all()
+    current_rubric = Rubric.objects.get(pk=rubric_id)
+    context = {'bbs': bbs, 'rubrics': rubrics, 'current_rubric': current_rubric}
+    return render(request, 'bboard/by_rubric.html', context)
