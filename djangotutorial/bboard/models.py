@@ -27,10 +27,10 @@ class Bd(models.Model):
     rubric = models.ForeignKey(Rubric, null=True, on_delete=models.PROTECT, verbose_name='Рубкрика')
     title = models.CharField(
         max_length=50,
-        validators=[
-            validators.RegexValidator(regex='^.{4}$'),
-            validators.MinLengthValidator(get_min_length),
-            validate_even],
+        # validators=[
+            # validators.RegexValidator(regex='^.{4}$'),
+            # validators.MinLengthValidator(get_min_length),
+            # validate_even],
             # MinMaxValueValidator(50, 100)],
         verbose_name='Название',
         error_messages={
