@@ -1,22 +1,22 @@
 from django.urls import path, re_path
-from .views import task_list, task_detail, task_create, task_edit, task_delete, task_statistics
+from . import views
 
 urlpatterns = [
     # Список задачь
-    path('', task_list, name='task_list'),
+    path('', views.task_list, name='task_list'),
 
     # Детальный обзор задачи
-    path('<int:pk>/', task_detail, name='task_detail'),
+    path('<int:task_id>/', views.task_detail, name='task_detail'),
 
     # Создание задачи
-    path('create/', task_create, name='task_create'),
+    path('create/', views.task_create, name='task_create'),
 
     # Редактирование задачи
-    # re_path(r'(?P<pk>\d+)/$)', task_edit, name='task_edit'),
+    re_path(r'^(?P<task_id>\d+)/edit/$', views.task_edit, name='task_edit'),
 
     # Удаление задачи
-    # re_path(r'(?P<pk>\d+)/$)', task_delete, name='task_delete'),
+    re_path(r'^(?P<task_id>\d+)/delete/$', views.task_delete, name='task_delete'),
 
     # Статистика по задачам
-    path('statistics/', task_statistics, name='statistics'),
+    path('statistics/', views.task_statistics, name='statistics'),
 ]

@@ -1,14 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Task List</title>
+<!--    <link rel="stylesheet" type="text/css" href="{% static 'bboard/style.css' %}" >-->
+
 </head>
 <body>
     {% for task in tasks %}
     <div class="task-row">
         <div>
-            <h2>{{task.title}}</h2>
+            <h2>
+                <a href="{{ task.get_absolute_url }}">{{task.title}}</a>
+            </h2>
             <span>{{task.priority}}</span>
             <span>{{task.deadline}}</span>
         </div>
@@ -20,5 +25,6 @@
         </div>
     </div>
     {% endfor %}
+    <script src="{% static 'task/script.js' %}" ></script>
 </body>
 </html>
