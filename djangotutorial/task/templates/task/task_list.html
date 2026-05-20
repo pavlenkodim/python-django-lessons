@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+</head>
+<body>
+    {% for task in tasks %}
+    <div class="task-row">
+        <div>
+            <h2>{{task.title}}</h2>
+            <span>{{task.priority}}</span>
+            <span>{{task.deadline}}</span>
+        </div>
+        <div>
+            {{task.created_at}}
+        </div>
+        <div>
+            {{task.is_done}}
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
