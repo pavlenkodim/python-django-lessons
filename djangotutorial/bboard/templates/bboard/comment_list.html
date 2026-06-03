@@ -1,0 +1,16 @@
+{% extends "layout/basic.html" %}
+{% block content %}
+<h2>Комментарии к "{{ bd.title }}"</h2>
+
+{% for comment in comments %}
+  <div>
+    <strong>{{ comment.author }}</strong> · {{ comment.created|date:"d.m.Y H:i" }}
+    <p>{{ comment.text }}</p>
+    <a href="{% url 'comment-detail' bd_pk=bd.pk pk=comment.pk %}">Подробнее</a>
+  </div>
+{% empty %}
+  <p>Комментариев пока нет.</p>
+{% endfor %}
+
+<a href="{% url 'comment-create' bd_pk=bd.pk %}">Оставить комментарий</a>
+{% endblock %}

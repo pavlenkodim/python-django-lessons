@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from . import views
 
 urlpatterns = [
-    # Список задачь
+    # Список задач
     path('', views.task_list, name='task_list'),
 
     # Детальный обзор задачи

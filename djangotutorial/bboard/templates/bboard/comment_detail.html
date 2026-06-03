@@ -1,0 +1,8 @@
+{% extends "layout/basic.html" %}
+{% block content %}
+<h2>Комментарий</h2>
+<p><strong>{{ comment.author }}</strong> · {{ comment.created|date:"d.m.Y H:i" }}</p>
+<p>{{ comment.text }}</p>
+
+<a href="{% url 'comment-list' bd_pk=comment.bd.pk %}">← Все комментарии</a>
+{% endblock %}

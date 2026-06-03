@@ -78,3 +78,22 @@ class Bd(models.Model):
         unique_together = ('published', 'title')
         # get_latest_by = '-published'
         # indexes = [models.Index(fields=['published', 'title'])]
+
+class Comment(models.Model):
+    bd = models.ForeignKey(
+        Bd,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name='Объявление'
+    )
+    author = models.CharField(max_length=100, verbose_name='Автор')
+    text = models.TextField(verbose_name='Текст комментария')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+
+    def __str__(self):
+        return f'Комментарий от {self.author} к "{self.bd.title}"'
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+        ordering = ['created']
