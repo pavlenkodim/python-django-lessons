@@ -8,7 +8,7 @@
     <h1>{{ task.title }}</h1>
     <p>{{ task.description }}</p>
     <div>
-        <a href="{% url 'task_delete' task.pk %}" >Удалить</a>
+        <a href="{% url 'task:task_delete' task.pk %}" >Удалить</a>
     </div>
 </body>
 </html>

@@ -19,6 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path("bboard/", include("bboard.urls")),
-    path('task/', include('task.urls')),
+    path('task/', include('task.urls', namespace='task')),
     path('admin/', admin.site.urls),
 ]

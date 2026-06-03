@@ -6,7 +6,7 @@
   <div>
     <strong>{{ comment.author }}</strong> · {{ comment.created|date:"d.m.Y H:i" }}
     <p>{{ comment.text }}</p>
-    <a href="{% url 'comment-detail' bd_pk=bd.pk pk=comment.pk %}">Подробнее</a>
+    <a href="{% url 'comment-detail' bd_pk=bd.pk sms_id=comment.pk %}">Подробнее</a>
   </div>
 {% empty %}
   <p>Комментариев пока нет.</p>

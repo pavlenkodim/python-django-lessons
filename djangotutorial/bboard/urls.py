@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import index, by_rubric, BbCreateView, CommentCreateView, comment_list, comment_detail, comment_delete
 
+# app_name='bboard'
 urlpatterns = [
     path('<int:bd_pk>/comments/<int:sms_id>/delete', comment_delete, name='comment-delete'),
     path('<int:bd_pk>/comments/<int:sms_id>/',  comment_detail, name='comment-detail'),
